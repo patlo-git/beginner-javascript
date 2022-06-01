@@ -10,6 +10,51 @@
 
 <body>
 
+    <script>
+        'use strict'; // don't have to use this, but can
+        // global variables
+        // function scoped
+        var first = 'Pat'; // variable declaration. can be changed or updated
+
+        // block scoped {} Intro'd in ES6. 
+        let age = 300; // can be updated
+        const cool = true; // can NOT be updated, unless it's an object or an array
+        // console.log(first); // function call statement
+
+        // use const by default.
+
+        // change to let if need need it.
+
+        // rarely if never use var. edge case when declaring a variable in a block.
+
+        // As general rule, variables should not start with a capital letter (unless a class).
+        // must start with a-z letter, or underscore "_", or dollar sign "$$$"
+
+        // variables with > 1 word
+        // camel case
+        const iLovePizza = true;
+
+        // upper camel case. when building a class
+        const ILoveOlives = false;
+
+        // snake case 
+        const this_is_snake_case = "cool";
+        
+        // kebab case - not allowed
+        // const this-is-kebab-case = "false";
+
+        // first = 'Patrick';
+        // cool = false;
+
+        // in strict mode not declaring the variable won't work
+        // var dog;
+        // dog = "snickers";
+
+        // code block
+        // if (age > 10) {
+        //     console.log('You are old');
+        // }
+    </script>
 </body>
 
 </html>
