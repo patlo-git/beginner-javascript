@@ -13,6 +13,10 @@
 // };
 
 /* eslint-disable */
+function inchToCM(inches) {
+  inches * 2.54;
+}
+}
 const inchToCM = inches => inches * 2.54;
 
 // function add(a, b = 3) {
@@ -38,7 +42,7 @@ const makeABaby = (first, last) => ({ name: `${first} ${last}`, age: 0 });
 // IIFE
 // Immediately Invoked Function Expression
 
-(function(age) {
+(function (age) {
   return `You are cool and age ${age}`;
 })(10);
 
@@ -46,7 +50,7 @@ const makeABaby = (first, last) => ({ name: `${first} ${last}`, age: 0 });
 const wes = {
   name: 'Westopher Bos',
   // Method!
-  sayHi: function() {
+  sayHi: function () {
     console.log(`Hey ${this.name}`);
     return 'Hey Wes';
   },
@@ -68,7 +72,7 @@ function handleClick() {
   console.log('Great Clicking!!');
 }
 
-button.addEventListener('click', function() {
+button.addEventListener('click', function () {
   console.log('NIce Job!!!');
 });
 

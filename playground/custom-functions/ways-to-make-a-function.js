@@ -85,12 +85,13 @@ const patrick = {
   name: 'Patrick Lorenz',
   // sayHi is a Method
   sayHi: function () {
-    console.log('Hey Patrick');
-    return 'Hey Patrick';
+    console.log('Hi Patrick');
+    return 'Hi Patrick';
   },
   // Short Hand Method
   yellHi() {
-    console.log('Hey Patrick!!');
+    // console.log('HEY Patrick!!');
+    return 'HEY Patrick!!';
   },
   // Arrow function
   // this is one that takes no arguments. short hand is most common.
