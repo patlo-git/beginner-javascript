@@ -14,7 +14,7 @@
 // }
 
 // ARROW FUNCTIONS
-// turn regular function into =>. must use in variable
+// turn regular function into =>. Arrow functions must be use in variable
 // function inchToCM(inches) {
 //   const cm = inches * 2.54;
 //   return cm;
@@ -24,11 +24,14 @@
 // function inchToCM(inches) {
 //   return inches * 2.54;
 // }
+// how do we get the return value of this?
 
 // CONVERT TO ANONYMOUS FUNCTION 
-// const inchToCM = function(inches) {
-//   return inches * 2.54;
-// }
+const inchToCM = function (inches) {
+  return inches * 2.54;
+};
+// how do we get the return value of this aand how do we pass in an argument to the inches param?
+console.log(inchToCM(1));
 
 // CONVERT TO ARROW FUNCTION
 // delete "function" and use fat arrow =>
@@ -42,6 +45,7 @@
 //   return total;
 // }
 const add = (a, b = 3) => a + b;
+console.log(add(1, undefined));
 
 // RETURNING AN OBJECT, we start with this (which may actually be easier to read than the => funct):
 // function makeABaby(first, last) {
