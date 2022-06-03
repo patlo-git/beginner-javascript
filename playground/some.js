@@ -1,1 +1,1 @@
-console.log("this is a separate file");
+console.log('this is a separate file');
