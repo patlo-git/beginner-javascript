@@ -4,12 +4,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title></title>
+  <title>Closures!</title>
   <link rel="stylesheet" href="../base.css">
 </head>
 
 <body>
 
+  <script>
+    // an example of a closure creating a function
+    // function outer() {
+    //   const outerVar = 'Hey, I am the OUTER var!';
+    //   function inner() {
+    //     const innerVar = 'Hey, I am the INNER var!';
+    //     console.log(innerVar);
+    //     console.log(outerVar);
+    //   }
+    //   return inner;
+    // }
+
+    // // variable called inner Function, basically
+    // const innerFn = outer();
+    // innerFn();
+
+    // outer scope
+    function createGreeting(greeting = '') {
+      const myGreet = greeting.toUpperCase();
+      // inner scope
+      return function(name) {
+        return `${myGreet} ${name}`;
+      }
+    }
+    const sayHello = createGreeting('hello');
+    const sayHey = createGreeting('hey');
+    console.log(sayHello('wes'));
+    console.log(sayHello('kait'));
+    console.log(sayHey('kait'));
+
+    // how to use closures to create "Private Variables"
+    function createGame(gameName) {
+      let score = 0;
+      return function win() {
+        score++;
+        return `Your name ${gameName} score is ${score}`;
+      }
+    }
+
+    const hockeyGame = createGame('Hockey');
+    const soccerGame = createGame('Soccer');
+
+
+  </script>
 </body>
 
 </html>

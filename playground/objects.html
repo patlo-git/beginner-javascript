@@ -9,7 +9,150 @@
 </head>
 
 <body>
+  <input type="text" name="first" value="patrick">
+
+  <script src="https://unpkg.com/lodash"></script>
   <script>
+    const age = 50
+    const patrick = {
+      // key: value
+      // if have var with same name as key and value, can just use the one word
+      age,
+      name: 'patrick',
+      'coool-duude': true,
+      'really kewl': false,
+      '666': true,
+      cat: 'tigger (rip)',
+      clothing: {
+        shirts: 10000,
+        pants: 3,
+      },
+      // METHODS - a function that lives inside of an object
+
+      // when you have a function that lives on a property in an object, that's a method of that object
+      // sayHello: function(greeting = 'Hey') {
+      //   return `${greeting} ${this.name}`
+      // }
+      // METHOD SHORTHAND
+      sayHello(greeting = 'Hey') {
+        return `${greeting} ${this.name}`
+      },
+      // can use an arrow function
+      // but b/c it's an arrow function as a property on an object, we don't have access to the this. keyword
+      // arrow functions do not scope to the thing they're called against
+      // parent scope (Window, in this case) will inherit this.
+      sneeze: () => {
+        console.log('Achoooo', this)
+      }
+    };
+
+    patrick.job = 'web developer';
+    patrick.age = 100;
+
+    // const propertyToCheck = prompt('What do you want to check?');
+
+    // ACCESSING PROPERTIES
+    // console.log(patrick.cat);
+    // console.log(propertyToCheck);
+    // ACCESSING PROPS WITH [sq bracket]
+    // console.log(patrick['cat']);
+    // console.log(patrick[propertyToCheck]);
+
+    const nameInput = document.querySelector('[name="first"]');
+
+    const name = nameInput ? nameInput.value : '';
+    console.log(name);
+
+    // DELETE A PROPERTY
+    // console.log(delete patrick.job);
+    // patrick.age = undefined
+    // patrick.age = null;
+
+    let name1 = 'patrick';
+    let name2 = 'patrick';
+
+    console.log(name1 === name2)
+    name1 = 'scott';
+    console.log(name1 === name2);
+    // update name1 to be what is name 2
+    name1 = name2;
+    console.log(name1 === name2);
+    name2 = name1;
+    name2 = 'westopher';
+
+    const person1 = {
+      first: 'wes',
+      last: 'bos',
+      clothing: {
+        shirts: 10,
+        pants: 3,
+      }
+    };
+
+    const person2 = {
+      first: 'wes',
+      last: 'bos',
+    };
+
+    // const person3 = person1;
+    // person3.first = 'Larry';
+    // console.log(person3.first);
+    // console.log(person1.first);
+
+    // SPREAD OPERATOR - takes a shallow copy of an object
+    // const person3 = { ...person1 };
+
+    // Deep Clone or Deep Copy using UTILITY LIBRARY
+    // LODASH _
+    // methods for using with objects and arrays, like copies of objects
+    const person3 = _.cloneDeep(person1);
+    person3.first = 'Larry';
+    // another option Object.assign
+    // const person3 = Object.assign({}, person1);
+
+    // person1 shirts gets updated here, b/c of shallow copy Spread
+    person3.clothing.shirts = 100;
+
+    // MERGING OBJECTS
+    const meatInventory = {
+      bacon: 2,
+      sausage: 3,
+      oyster: 10,
+    };
+    
+    const veggieInventory = {
+      lettuce: 5,
+      tomatoes: 3,
+      oyster: 15,
+    };
+    // can get oyster of 15 now, b/c veggie is second so it grabs that value in the new inventory object
+
+    const inventory = { 
+      ...meatInventory, 
+      ...veggieInventory,
+      // can add own values
+      avocado: 10,
+    }
+
+    // PASSING IN VIA REFERENCE vs COPY
+
+    function doStuff(data) {
+      data = 'something else';
+      console.log(data);
+    }
+
+    function doStuff2(data) {
+      // To avoid bugs and errors, might want to pass in a copy otherwise you could be modifying external variable, in this case inventory
+      data.tomatoes = 100000000;
+      console.log(data);
+    }
+
+    
+    doStuff2(inventory);
+
+    doStuff(name1);
+
+
 
   </script>
 </body>

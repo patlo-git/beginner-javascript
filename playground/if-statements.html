@@ -9,10 +9,111 @@
 </head>
 
 <body>
+  * empty array
+  * empty object
+  
+  <h2>Truthy Values</h2>
+  * 1
+  * -10
+  * full string
+  * a string of "0"
+
+  <h2>Falsyy Values</h2>
+  * 0
+  * undefined variable
+  * Variable set to null
+  * a variable set to `"hello" - 10` NaN
+  * empty string
+
   <script>
-    if (10 > 2) {
-      console.log('Yep');
+    const age = 100;
+    if (age > 70) {
+      console.log('Older than 70');
+    } else if (age > 80) {
+      console.log('In your 80s');
+    } else if (age > 90) {
+      console.log('In your 90s');
+    } else {
+      console.log('nothing was true');
     }
+
+    function slugify(sentence, lowercase) {
+      // if (lowercase) {
+      //   // regEx = regular expression
+      //   return sentence.replace(/\s/g, '-').toLowerCase();
+      // }
+      // // else
+      // return sentence.replace(/\s/g, '-');
+
+      // ANOTHER OPTION
+      // let slug = sentence.replace(/\s/g, '-');
+      // if (lowercase) {
+      //   slug = slug.toLowerCase();
+      // }
+      // return slug;
+
+      // ANOTHER OPTION
+      let slug = sentence.replace(/\s/g, '-');
+      if (lowercase) {
+        return slug.toLowerCase();
+      }
+      return slug;
+    }
+
+    const name = 'wes';
+    const last = 'bos';
+
+    if (name === 'scott' || (name === 'wes' && last === 'bos')) {
+      console.log('COool Name!');
+    }
+
+    // Methods that return true or false. Can return directly inside function or put in own variable to make it easier to read
+    const isAwesomeName = 'awesome'.includes(name);
+    if (isAwesomeName) {
+      console.log('SUPER COOL AWESOME NAME');
+    }
+
+    function nameIsAwesome(name) {
+      return 'awesome'.includes(name);
+    }
+
+    if(nameIsAwesome('wes')) {
+      console.log('COOL NAME WES')
+    }
+
+    // TRUTHY VS FALSY
+    let score = 1;
+
+    if (score) {
+      console.log('There is a score already');
+    } else {
+      console.log('No score yet');
+    }
+
+    // SETTING AN ARRAY AND LOOPING THROUGH TRUTHY/FALSY VALUES
+    // * empty array
+    // * empty object
+    // * 1
+    // * -10
+    // * full string
+    // * a string of "0"
+    // * 0
+    // * undefined variable
+    // * Variable set to null
+    // * a variable set to `"hello" - 10` NaN
+    // * empty string
+    const values = [[], {}, -10, 0, 1, '', 'full string', ' ', undefined, NaN, null, ''];
+
+    console.group('truthy or falsy values');
+    values.forEach(value => {
+      if(value) {
+      console.log(value, 'is truthy');
+      } else {
+        console.log(value, 'is fasley');
+      }
+    });
+    console.groupEnd();
+   
   </script>
 </body>
 
