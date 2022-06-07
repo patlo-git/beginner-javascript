@@ -11,7 +11,7 @@
 <body>
   * empty array
   * empty object
-  
+
   <h2>Truthy Values</h2>
   * 1
   * -10
@@ -113,7 +113,72 @@
       }
     });
     console.groupEnd();
+
+    console.clear();
    
+    // COERCION
+    let isCool = false;
+    if (!isCool) {
+      console.log('you are cool');
+    } else {
+      console.log('you are so NOT cool');
+    }
+
+    // TERNARY - shorthand if statement. whne you want to assign a run functionality based on something being true or false. Needs three things. It needs a condition, what to do when it's true, and what to do when it's false.
+    const count = 2;
+    // let word;
+    // if(count === 1) {
+    //   word = 'item';
+    // } else {
+    //   word = 'items';
+    // }
+
+    // 1. condition
+    // 2. what to do if true
+    // 3. what to do if false
+    const word = count === 1 ? 'item' : 'items';
+    // can also do it directly inside the variable
+    const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart`;
+    console.log(sentence);
+
+    function showAdminBar() {
+      console.log('running show admin bar')
+    }
+    const isAdmin = false;
+    // if isAdmin true then run function showAdminBar, if false do nothing.
+    isAdmin ? showAdminBar() : null;
+
+    // THE AND AND TRICK &&
+    function check1() {
+      console.log('running check 1')
+      return true;
+    }
+    function check2() {
+      console.log('running check 2')
+      return false;
+    }
+    function check3() {
+      console.log('running check 3')
+      return true;
+    }
+
+    if (check1() && check2() && check3()) {
+      console.log('all checks passed');
+    } else {
+      console.log('some checks FAILED');
+    } 
+
+    // isAdmin ? showAdminBar() : null;
+    // && trick shorthand
+    // if isAdmin is true it'll run the function, but if false function will never run.
+    // hard to do if statements in React, so you see this in React a lot 
+    isAdmin && showAdminBar();
+
+    // BLOCK LIST IF STATEMENTS
+    if(isAdmin) showAdminBar();
+    // same as this
+    if(isAdmin) { showAdminBar(); }
+
   </script>
 </body>
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>
-
+    ARRAY METHODS!!
   </title>
   <link rel="stylesheet" href="../../base.css">
 </head>
@@ -13,6 +13,7 @@
 <body>
   <script>
     const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+
 
     const buns = ['egg', 'wonder', 'brioche'];
 
@@ -44,37 +45,128 @@
       Static Methods
     */
 
-    // Array.of();
+    // Array.of(); used for creating an array from its argument
+    // [...'wes']
+    // // expected output 
+    // ['w','e','s']
 
-    // Make a function that creates a range from x to y with Array.from();
+    // Make a function that creates a range from x to y with Array.from(); very handy
+    // can denote in function, _item, to say it doesn't do anything
+    function createRange(start, end) {
+      const range = Array.from( { length: end - start + 1}, function(_item, index) {
+        return index + start ;
+      });
+      return range;
+    }
 
+    const myRange = createRange(3, 7);
+    
     // Check if the last array you created is really an array with Array.isArray();
+    console.log(Array.isArray(myRange));
 
     // Take the meats object and make three arrays with Object.entries(), Object.keys, Object.values()
+
+    console.log(Object.entries(meats));
+    console.log(Object.keys(meats));
+    console.log(Object.values(meats));
+
+    // Object.entries(meats).forEach(entry => {
+    //   // const key = entry[0];
+    //   // const value = entry[1];
+
+    //   // OPTION: COULD ALSO DO
+    //   // takes first item of entry array, 
+    //   // puts in variable called key,
+    //   // takes second item of entry array,
+    //   // puts it in a second variable called value.
+    //   // DESTRUCTURING
+    //   const [key, value] = entry;
+    //   console.log(key, value);
+    // });
+
+    // could go one step further and ALSO do
+    Object.entries(meats).forEach(([key, value]) => {
+      console.log(key, value);
+    });
 
     /*
       Instance Methods
     */
+    //  Methods that live on each array
 
     // Display all bun types with " or " - use join()
+    console.log(buns.join(' or '));
 
-    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+
+    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
+    const foodString = "hot dogs,hamburgers,sausages,corn";
+    console.log(foodString.split(','));
 
     // take the last item off toppings with pop()
+    const lastItem = toppings.pop();
+    console.log(lastItem);
     // add it back with push()
+    toppings.push(lastItem);
+    console.log(toppings);
+    
     // take the first item off toppings with shift()
+    const firstItem = toppings.shift();
+    console.log(firstItem);
     // add it back in with unshift()
-    // Do the last four,but immutable (with spreads and new variables)
+    toppings.unshift(firstItem);
 
+    // Do the last four examples, but immutable (with spreads and new variables)
+    // TAKING THE LAST ITEM OFF, and adding it back on, WITHOUT USING POP
+    // let newToppings = toppings.slice(0, toppings.length - 1);
+    // console.log(newToppings, 'new length');
+    // newToppings = [...newToppings, toppings[toppings.length - 1]];
+    // console.log(newToppings, 'original length');
+    
+    // TAKING THE FIRST ITEM OFF, and adding it back on, WITHOUT USING SHIFT
+    let newToppings = toppings.slice(1, toppings.length);
+    console.log(newToppings, 'new length');
+    newToppings = [toppings[toppings.length - 9], ...newToppings];
+    console.log(newToppings, 'original length');
 
     // Make a copy of the toppings array with slice()
-    // Make a copy of the toppings array with a spread
-    // take out items 3 to 5 of your new toppings array with splice()
-    // find the index of Avocado with indexOf() / lastIndexOf()
-    // Check if hot sauce is in the toppings with includes()
-    // add it if it's not
-    // flip those toppings around with reverse()
+    const toppingsCopy = toppings.slice(0);
+    toppings[0] = 'Mushy boy';
+    console.log(toppings, 'toppings OG');
+    console.log(toppingsCopy, 'toppings copy');
 
+    // Make a copy of the toppings array with a spread
+    const toppingsCopy2 = [...toppings];
+    console.log(toppingsCopy2);
+
+    // take out items 3 to 5 of your new toppings array with splice()
+    toppingsCopy.splice(3,5);
+    console.log(toppingsCopy);
+
+    // find the index of Avocado with indexOf() / lastIndexOf()
+    // works with any types
+    const avoIndex = toppings.indexOf('Avocado');
+    console.log(avoIndex);
+
+    const avoIndexLast = toppings.lastIndexOf('Avocado');
+    console.log(avoIndexLast);
+
+    // Check if hot sauce is in the toppings with includes()
+    // includes is not case sensitive
+    const hotSauceCheck = toppings.includes('Hot Sauce');
+    console.log(hotSauceCheck);
+    // add it if it's not
+    if(!hotSauceCheck) {
+      toppings.push('Hot Sauce');
+    }
+    console.log(toppings);
+    // flip those toppings around with reverse()
+    // reverse is mutable
+    toppings.reverse();
+    console.log(toppings, 'toppings reversed - mutable');
+    
+    // take a copy with our Spread operator and then call reverse() on that
+    const toppingsReversed = [...toppings].reverse();
+    console.log(toppingsReversed, 'toppings reversed -  inmutable');
     /*
       Callback Methods
     */

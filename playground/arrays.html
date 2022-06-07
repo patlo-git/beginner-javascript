@@ -4,14 +4,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>
-
-  </title>
+  <title>ARRAYS!</title>
   <link rel="stylesheet" href="../base.css">
 </head>
 
 <body>
 
+  <script>
+    // array literal syntax
+    const names = ['wes', 'kait', 'snickers'];
+    console.log(names[0]);
+    console.log(names.length);
+    console.log(names[names.length - 1]);
+
+    // Methods for arrays
+
+    // Most basic thing you'll want to do is add items. push is mutable.
+    names.push('lux');
+    console.log(names, 'original array');
+    // create a new array, a common thing in React-land
+    // takes a copy and updates copy
+    const names2 = [...names, 'lux'];
+    console.log(names2, 'new names2 array');
+    // unshift adds to the front. mutable
+    names.unshift('poppy');
+    console.log(names, 'original array');
+    // immutable way to do it
+    const names3 = ['poppy', ...names]
+    console.log(names3, 'names3 array');
+
+    // if want to add items to the middle, there is no method to do it.
+    const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
+    // create new array, slice new item to place in index you want to insert
+    const newBikes = [
+      // spread operator plus slice index point 0 to 1 - point before second parameter
+      ...bikes.slice(0,2),
+      'benotto',
+      // - then resume new array from 2nd index point on
+      ...bikes.slice(2)
+    ];
+    console.log(newBikes);
+
+    // removing an item from an array
+    const newBikes2 = [
+      ...newBikes.slice(0,3),
+      ...newBikes.slice(4)
+    ];
+    console.log(newBikes2, 'new bikes 2 array - remove')
+
+    // 
+    const comments = [
+      { text: 'cool beans', id: 123 },
+      { text: 'sick', id: 133 },
+      { text: 'Neato', id: 233 },
+      { text: 'good bikes', id: 333 },
+      { text: 'so good', id: 433 }
+    ];
+
+    function deleteComent(id, comments) {
+      // first find the index of the item of the array
+      // make a new array without that item in it
+      // return that new array
+      // create new var, take the comments, use findIndex method, take each comment, if comment.id is equal to id that has been passed in
+      const commentIndex = comments.findIndex(comment => comment.id === id);
+      // return new array, everything in it will be everything up until commentIndex, then get everything after it.
+      return [
+        ...comments.slice(0, commentIndex),
+        // comment getting rid of in between
+        ...comments.slice(commentIndex + 1),
+      ];
+    }
+
+    // loops over every name, pass it the name, return whether the name is equal to 'kait'
+    const kaitIndex = names.findIndex(name => name === 'kait');
+    const newNamesWithoutKait = [
+      // get everything up to kait index
+      // take the items out of this array that gets returned
+      // and spread them into new one newNamesWithoutKait
+      ...names.slice(0, kaitIndex),
+      // everything after kait index
+      ...names.slice(kaitIndex + 1)
+    ];
+
+    // new method called Flat - returns a new array with the sub array elements concatenated into it. Can use it instead of Flat, but spread might be preferred
+    // const newNames999 = newNamesWithoutKait.flat();
+    // console.log(kaitIndex);
+    // console.log(names[kaitIndex]);
+    console.log(newNamesWithoutKait, 'newNames Spread');
+
+
+
+
+    // SPLICE MUTATES ORIGINAL ARRAY
+    // taking something out of it.
+    // const numbers = [1,2,3,4,5,6,7,8,9];
+
+    // console.log(numbers);
+    // numbers.splice(3, 2);
+    // console.log(numbers);
+
+
+  
+    
+    // MUTATION METHOD - some methods will modify the original array
+    // const numbers = [1,2,3,4,5,6,7,8,9];
+
+    // // to reverse, but this changes the original array
+    // // numbers.reverse();
+
+    // // ANY TIME YOU WANT TO USE A MUTATION METHOD AND NOT MUTATE THE ORIGINAL ARRAY
+    // // TAKE A COPY OF THE ORIGINAL ARRAY
+    // // spread the old one into it
+    // // can immediately call the method on the array and put it in a new one.
+    // const numbersReversed = [...numbers].reverse();
+    // console.log(numbersReversed, 'new reversed array');
+
+    // console.log(numbers, 'original array');
+
+
+    // // IMMUTABLE METHOD - does not change the original data
+    // // most are immutable, but a few are gotchas, like .reverse
+    // // if you want to create a new array out of a portion of original of items
+    // const pizzaSlice = numbers.slice(2,4);
+    // console.log(pizzaSlice, 'pizza slice');
+
+
+
+
+  </script>
 </body>
 
 </html>

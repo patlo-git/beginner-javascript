@@ -9,7 +9,68 @@
 </head>
 
 <body>
+  <script>
+    // takes two arguments, callback (can be anonymous or a function set outside of it) and # of ms to run after
+    // setTimeout(function() {
+    //   console.log('Done!');
+    // }, 500);
+    function buzzer() {
+      console.log('EENNNGGGGG!!!');
+    }
 
+    // async example
+    // console.log('starting');
+    // setTimeout(buzzer, 500);
+    // console.log('finishing');
+
+    // Intervals - run AFTER a set amount of time
+    // can use to check something and even animate
+    // setInterval(buzzer, 100);
+
+    // if we want a function to start immediately and then after a specific interval
+    function setImmediateInterval (funcToRun, ms) {
+      // right away call that function
+      funcToRun();
+      // run a regular interval (and stop it)
+      return setInterval(funcToRun, ms);
+    }
+
+    // setImmediateInterval(buzzer, 2000);
+
+    function sayHi() {
+      console.log('Heeyyyy');
+    }
+    // setImmediateInterval(sayHi, 200);
+
+    // if don't do something after 5 seconds we destroy the webpage
+    function destroy() {
+      document.body.innerHTML = `<p>DESTROYED</p>`;
+    }
+    
+    // if you need to stop the timer, save reference to it in a variable
+    const bombTimer = setTimeout(destroy, 5000);
+    // If someone doesn't click in 5 seconds we're going to run it, but if someone does click then we clear it.
+    // How do I stop the timer from running?? Wait five seconds and if someone clicks we want to stop the timer from running.
+    window.addEventListener('click', function () {
+      console.log('You clicked! You saved the world')
+      // ??? How do I stop. gets a number reference to how many timers are on the page
+      // console.log(bombTimer)
+      clearTimeout(bombTimer); // STOP THE TIMER FROM RUNNING
+    })
+    
+    // clear set interval the same way
+    const poopInterval = setInterval(function() {
+      console.log('poop');
+      console.log('hehehehe');
+      console.log('uuunggggh');
+    }, 100);
+    // if want to run every 100 ms, but after 3 seconds I want to stop entirely and clear after 3 seconds.
+    setTimeout(function() {
+      // console logging poop interval sees how many timers are on the page at this point in time
+      console.log(poopInterval)
+      clearInterval(poopInterval);
+    }, 5000)
+  </script>
 </body>
 
 </html>

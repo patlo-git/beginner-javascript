@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>If Statements</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+  <script>
+    // const numbers = [1, 2, 3];
+    // for (let i = 0; i < numbers.length; i++) {
+    //   console.log(numbers[i]);
+    // }
+
+    // element, index, array
+    // [1, 2, 3].forEach(function logNumber(n, i, array) {
+    //   console.log(n, i, array);
+    // });
+
+    // function logNumber(number) {
+    //   console.log(number);
+    // }
+
+    // function myForEachWithLogNumber(array) {
+    //   for (let i = 0; i < array.length; i++) {
+    //     logNumber(array[i]);
+    //   }
+    // }
+
+    // myForEachWithLogNumber([5,6,7]);
+    
+    // copy of the forEach method
+    // 7. logNumber is finally run! with the three arguments from callback
+    function logNumber(element, i, array) {
+      // 8. prints the element, i value, and array to the console.
+      // 9. goes back to the for loop, rinse repeat.
+      // 9a. how does it know to do that?
+      console.log(element, i, array);
+    }
+
+    // this function accepts two parameters ([4,5,6], logNumber getting passed in)
+    // 2. function invoked by 1. accepts ([4,5,6], and logNumber)
+    function myForEach(array, callback) {
+    // 3. iterates through the for loop. 
+    // 4. checks the length. since i=0, it is less than the array.length of 3
+    // therefore it runs the block
+      for (let i = 0; i < array.length; i++) {
+        // *** where it gets tricky for me. ***
+        // 5. runs callback/logNumber that has three parameters; (element at array index iterated, value of i, and the array [4,5,6])
+        // 6. then what? returns or runs callback? which is logNumber. with the three values we got back from myForEach. and passes the values into logNumber. 
+        callback(array[i], i, array);
+      }
+    }
+
+    // 1. runs first. invokes the function
+    myForEach([4,5,6], logNumber);
+  </script>
+</body>
+
+</html>
