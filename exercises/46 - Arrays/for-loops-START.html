@@ -14,13 +14,69 @@
 
     const name = 'Wes Bos';
 
+    const wes = {
+      name: 'wes',
+      age: 100,
+      cool: true,
+    }
+
     // For
+    // good for running code an X number of times.
+    // requires three things; initial expression, condition, final expression
+    // flexible in incrementing in the ways that we want
+    // traditionally used to loop over something, like an array of numbers 
+    for (let i = 0; i <= 10; i++) {
+      console.log(i);
+    }
 
     // For of
+    // fairly new to JS. 
+    // used for looping over iterables; something with a length.
+    // good for using with emojis
+    // if you ever need to sequence a bunch of data, doing one thing after another in a loop, the for of loop will allow you to use await inside of it.
+    // use case - sequencing promises
+    for(const letter of name) {
+      console.log(letter);
+    }
 
-    // For in
+    for(const number of numbers) {
+      console.log(number);
+    }
+
+    // downside to this vs for each is that it doesn't give us the index, just gives us the raw value. also can't filter.
+
+    // For in 
+    // used to looping over keys of an object
+    // works similarly to for of
+    // "how is this better than object.entries or object.keys or object.values?" it's not, that is preferred.
+    // gotcha. vs object.entries. looks ahead to prototypes.
+    // if you need to grab the prototype methods and properties you can use a for in loop to grab those.
+    for(const prop in wes) {
+      console.log(prop);
+    }
 
     // While Loop
+    // and Do While don't use very often
+    // The while statement creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.
+    // takes a condition and runs infinitely until returns false
+    // need an exit condition or will run in infinite loop
+    // always checks the condition before the first run then goes ahead and does it.
+    let cool = true;
+    let i = 1;
+    while(cool === true) {
+      console.log('You are cool');
+      i++;
+      if (i > 100) {
+        cool = false;
+      }
+    }
+
+    // Do While Loop
+    // we have a do that runs first, then checks the condition after the first run
+    // creates a loop that executes a specified statement until the test condition evaluates to false. 
+    do {
+
+    } while();
   </script>
 </body>
 

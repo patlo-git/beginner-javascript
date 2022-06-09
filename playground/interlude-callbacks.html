@@ -42,26 +42,26 @@
     //   console.log(element, i, array);
     // }
 
-    // // this function accepts two parameters ([4,5,6], logNumber getting passed in)
-    // // 2. function invoked by 1. accepts ([4,5,6], and callback/logNumber))?
-    // // which does what exactly? does the callback/logNumber pass it its args?
-    // // why does myForEach need to have any parameters or accept any arguments?
-    // // b/c they're placeholders for the values being passed in by myForEach, the first thing executed. a reference for the callback'd function
-    // // plus, the for loop needs the array as a reference so it can work.
-    // function myForEach(array, callback) {
-    // // 3. iterates through the for loop. 
-    // // 4. checks the length. since i=0, it is less than the array.length of 3
-    // // therefore it runs the block
-    //   for (let i = 0; i < array.length; i++) {
-    //     // *** where it gets tricky for me. ***
-    //     // 5. runs callback/logNumber that has three parameters; (element at array index iterated, value of i, and the array [4,5,6])
-    //     // 6. then what? returns or runs callback? which is logNumber. with the three values we got back from myForEach. and passes the values into logNumber.
-    //     // NOTE: why wouldn't you just couple logNumber, like in the above example, with this instead of having the callback? what is the advantage? 
-    //     // See add1 for reason why.
-    //     // so you can reuse code by using placeholders for additional functions?
-    //     callback(array[i], i, array);
-    //   }
-    // }
+    // this function accepts two parameters ([4,5,6], logNumber getting passed in)
+    // 2. function invoked by 1. accepts ([4,5,6], and callback/logNumber))?
+    // which does what exactly? does the callback/logNumber pass it its args?
+    // why does myForEach need to have any parameters or accept any arguments?
+    // b/c they're placeholders for the values being passed in by the calling of myForEach, the first thing executed. a reference for the callback'd function
+    // plus, the for loop needs the array as a reference so it can work.
+    function myForEach(array, callback) {
+    // 3. iterates through the for loop. 
+    // 4. checks the length. since i=0, it is less than the array.length of 3
+    // therefore it runs the block
+      for (let i = 0; i < array.length; i++) {
+        // *** where it gets tricky for me. ***
+        // 5. runs callback/logNumber that has three parameters; (element at array index iterated, value of i, and the array [4,5,6])
+        // 6. then what? returns or runs callback? which is logNumber. with the three values we got back from myForEach. and passes the values into logNumber.
+        // NOTE: why wouldn't you just couple logNumber, like in the above example, with this instead of having the callback? what is the advantage? 
+        // See add1 for reason why.
+        // so you can reuse code by using placeholders for additional functions?
+        callback(array[i], i, array);
+      }
+    }
 
     // // 1. runs first. invokes the function
     // myForEach([4,5,6], logNumber);
