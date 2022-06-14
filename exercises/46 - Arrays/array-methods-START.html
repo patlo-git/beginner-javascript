@@ -315,7 +315,7 @@
       return a - b;
     }
     console.log(orderTotals.sort(numberSort), 'order totals');
-
+    // **********************************************************
     // Sort the prices with sort()
     // First we convert object into array where each item is an array, with two items a piecce.
     // Then we sort over each of them giving us those first and second items/values of array.
@@ -328,7 +328,7 @@
     // turn this sorted array BACK into an Object. wrap it in an object.fromEntries.
     // why is the Object out of order now? It's not like his object shown, nor is it an exact copy of the array
     // looks like it's putting it alphabetically when put back in object
-    console.table(Object.fromEntries(productsSortedByPrice));
+    console.table(Object.fromEntries(productsSortedByPrice, 'sorted table'));
 
 
     /*

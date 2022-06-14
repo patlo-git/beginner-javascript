@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+
+    function logTopping(topping, index, originalArray) {
+      const nextTopping = originalArray[index + 1];
+      const prevTopping = originalArray[index - 1];
+
+      // log the topping
+      console.log(topping, 'topping');
+      // log previous topping if there is one
+      prevTopping ? console.log(prevTopping, 'previous topping') : null;
+
+      // could also use a TERNARY
+      // if next topping, log it, otherwise do nothing
+      nextTopping ? console.log(nextTopping, 'next topping') : null;
+
+
+      // could also use && hack to abuse conditionals
+      // check if conditional is true, if true, it'll keep going, if false it'll short circuit and not check the second one.
+      // if we're on the last item, the item is going to be one less than the array length
+      index === originalArray.length - 1 && console.log('Goodbye');
+    }
+    toppings.forEach(logTopping);
+  </script>
+</body>
+</html>

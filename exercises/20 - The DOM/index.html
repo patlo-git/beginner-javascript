@@ -9,17 +9,47 @@
 </head>
 
 <body>
+  <p class="wes">I am Wes, I <em>love</em> to bbq and <strong>make websites!</strong></p>
+  <img class="nice cool" src="https://picsum.photos/600" alt="">
   <div class="items">
-    <p>Hi I'm a item</p>
-    <div>
-      <h2>Sub Div</h2>
+    <div class="item">
+      <!-- If you want to attach some metadata or any kind of data to an element that doesn't have a standard name attribute, use "data-(insert your made up custom data name here)" -->
+      <img class="custom" data-name="wes" src="https://picsum.photos/200" alt="">
+      <img data-name="kait" src="https://picsum.photos/200" alt="">
+      <img data-name="lux" src="https://picsum.photos/200" alt="">
       <p>Hi I'm a item</p>
-
     </div>
-    <img src="https://source.unsplash.com/random/300x300" />
-    <p>Hi I'm a item</p>
-    <p>Hi I'm a item</p>
+    <div class="item item2">
+      <img src="https://picsum.photos/200" alt="">
+      <h2>I am a heading
+        <span>I am hidden!</span>
+      </h2>
+      <p>Hi I'm a item</p>
+    </div>
+    <article class="item">
+      <h2>Im an article</h2>
+      <p class="pizza">This is how many pizzas I ate 🍕</p>
+    </article>
   </div>
+  </div>
+
+  <style>
+    h2 span {
+      display: none;
+    }
+
+    img {
+      transition: all 0.2s;
+    }
+
+    .round {
+      border-radius: 50%;
+      transform: rotate(1turn) scale(1.2);
+      box-shadow: 0 0 10px black;
+    }
+  </style>
+  <!-- <script src="./the-dom.js"></script> -->
+  <script src="./traversing.js"></script>
 </body>
 
 </html>
