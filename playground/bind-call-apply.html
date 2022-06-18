@@ -9,7 +9,94 @@
 </head>
 
 <body>
+  <p>Hey</p>
+  <button>Click Me</button>
+  <div class="wrapper">
+    <p>Hey im a WRAPPER</p>
+  </div>
 
+  <script>
+    const person = {
+      name: 'Patrick Lorenz',
+      // method
+      // if call person.sayHi(), this refers to person
+      // this method is an example of OOP
+      // if it were to take an argument it would be functional approach
+      sayHi() {
+        console.log(`hey ${this.name}`);
+        return `hey ${this.name}`;
+      }
+    };
+
+    const jenna = { name: 'Jenna' };
+
+    // in the sayHi example, this is bound to the window
+    // even though we defined sayHi function inside of an object 
+    // it's not bound to it unless we call it as a method of an object
+    // we can use the .bind keyword to change where the this keyword is defined
+    // create a function called sayHi, that when called it's this keyword will be equal to whatever we pass in,
+    // in this case the "jenna" object
+    // sayHi is a function
+    // bind is a method that lives on all functions
+    const sayHi = person.sayHi.bind(jenna);
+
+    // Query Selector example
+    // to make a short form example of QS and QSALL
+    // by calling bind against qs, we say when the $ sign function is run
+    // use 'document' as "this" value, whih qs needs
+    // doesn't call the function, this just returns a new function which you can just store in a variable
+    const $ = document.querySelector.bind(document);
+    const lookFor = document.querySelectorAll.bind(document);
+
+    // grabs first item with class of wrapper
+    // saves it to var of wrapper
+    const wrapper = document.querySelector('.wrapper');
+    // grabs first p element in variable of wrapper, which is an element with a class of wrapper
+    // basically grabs first p in wrapper class
+    const p = wrapper.querySelector('p');
+    console.log(p);
+    console.log($('p'));
+    console.log(lookFor('p'));
+
+    // object
+    const bill = {
+      total: 1000,
+      calculate: function (taxRate) {
+        return this.total + (this.total * taxRate);
+      },
+      describe(mealType, drinkType, taxRate) {
+        console.log(`Your meal of ${mealType} with a drink of ${drinkType} was ${this.calculate(taxRate)}`);
+
+      }
+    }
+
+    const total = bill.calculate(0.13);
+    // if we want to use the calculate function and store it in an external variable
+    // first arg of bill.calculate.bind is what it's being bound to or what 'this' is, then we pass "first" argument, which is taxRate of 0.06, lining up with what's passed
+    // confusing ***********
+    const calc = bill.calculate.bind({ total: 500 }, 0.06);
+    console.log(calc());
+
+    // CALL
+    const total2 = bill.calculate.call({ total: 500 }, 0.06);
+    console.log(total2);
+
+    // APPLY
+    // while call accepts an argument list
+    // apply accepts a single array of arguments
+    // if you don't care about what 'this' is equal to, you can pass null as first argument then the additional arguments
+    const total3 = bill.calculate.apply({ total: 325 }, [0.06]);
+    console.log(total3);
+
+    // CALL
+    const myMeal1 = bill.describe.call(bill, 'pizza', 'ginger beer', 0.13);
+
+
+    // APPLY
+    const myMeal2 = bill.describe.apply(bill, ['pizza', 'ginger beer', 0.13]);
+
+
+  </script>
 </body>
 
 </html>

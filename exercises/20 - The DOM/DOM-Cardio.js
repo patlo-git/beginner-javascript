@@ -133,6 +133,7 @@ cardsHTML += generatePlayerCard('moose', 43, 3);
 console.log(cardsHTML);
 
 // append those cards to the div
+// cards is the div we created with a class of cards
 cards.innerHTML = cardsHTML;
 // put the div into the DOM just before the wrapper element
 myWrapper.insertAdjacentElement("beforebegin", cards);

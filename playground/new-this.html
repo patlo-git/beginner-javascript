@@ -9,7 +9,66 @@
 </head>
 
 <body>
+  <button class="one">Button 1</button>
+  <button class="two">Button 2</button>
+  <script>
+    const myDate = new Date('August 11, 2025');
+    console.dir(myDate);
+    console.log(myDate.getFullYear());
 
+    // store info about the pizza that's being made
+    // constructor = the function that makes an object
+    function Pizza(toppings = [], customer) {
+      console.log('making a pizza');
+      // save the toppings that were passed in to this instance of pizza
+      // the way we attach properties to instances of the object
+      // these are instance properties
+      this.toppings = toppings;
+      this.customer = customer;
+      this.id = Math.floor(Math.random() * 16777215).toString(16);
+      // count the slices left in a pizza
+      // every pizza starts at 10
+      this.slices = 10;
+    }
+
+    // adding eat to the prototype of Pizza
+    // every instance has access to the prototype of Pizza
+    // Classes syntax would just be eat() {}
+    Pizza.prototype.eat = function () {
+      if (this.slices > 0) {
+        // this this is greater than 0 update the # of slices
+        this.slices = this.slices - 1;
+        console.log(`CHOMP! You now have ${this.slices} left.`);
+        return this.slices;
+      } else {
+        console.log(`Sorry! No slices left.`);
+      }
+    }
+
+    Pizza.prototype.describe = function () {
+      return `This pizza with ${this.toppings} is for ${this.customer} and there are ${this.slices} slices left.`;
+    }
+
+    // instances of Pizza
+    const pepperoniPizza = new Pizza(['pepperoni'], 'Wes Bos');
+    const canadianPizza = new Pizza(['pineapple', ' ham'], 'Kait Bos');
+
+    const button1 = document.querySelector('.one');
+    const button2 = document.querySelector('.two');
+
+    // function tellMeAboutTheButton() {
+    //   console.log('outside', this);
+    //   setTimeout(() => {
+    //     console.log('inside', this);
+    //     this.textContent = 'YouClicked Me';
+    //   }, 1000)
+    // }
+
+    // button1.addEventListener('click', tellMeAboutTheButton);
+    // button2.addEventListener('click', tellMeAboutTheButton);
+
+    // Refers to the instance of the thing that was made
+  </script>
 </body>
 
 </html>

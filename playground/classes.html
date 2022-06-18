@@ -10,6 +10,104 @@
 
 <body>
 
+  <script>
+    class Food {
+      constructor(name) {
+        this.name = name;
+      }
+      // instance
+      edible = true;
+    }
+    // child of food. Pizza is going to extend Food
+    // inherits anything in Food
+    // Classes can only extend from one other class
+    class Pizza extends Food {
+      constructor(toppings = [], customer) {
+        // Must call this first
+        // "super" calls its parent with its arguments
+        // the argument goes into the parameter for Food constructor and get saved as this.name
+        super('pizza')
+        // computed instance properties.
+        // things that change. saved within the constructor.
+        // often you will put this underscore_ there to
+        // signify to other devs it's a utility and
+        // shouldn't change
+        this._toppings = toppings;
+        this.customer = customer;
+      }
+      // default instance property
+      // things that don't change. saved outside the constructor.
+      // does not live on "Pizza" constructor, just the instance of
+      // No: Pizza.slices
+      // Yes: instance.slices
+      slices = 10;
+
+      // prototype method
+      // almost always going to use this one!
+      // when creating a method
+      // efficient for memory and performance
+      // methods are saved on the prototype
+      // like how methods live on built ins
+      // like methods for strings or numbers, etc
+      eat() {
+        if (this.slices > 0) {
+          // if this is greater than 0 update the # of slices
+          this.slices = this.slices - 1;
+          console.log(`CHOMP! You now have ${this.slices} left.`);
+          return this.slices;
+        } else {
+          console.log(`Sorry! No slices left.`);
+        }
+      }
+      // don't do this - bad for memory
+      // instance method
+      // saved to instances not prototype
+      hi = () => {
+        console.log('Hiiii!');
+      }
+
+      // Accesors: Get and Set || Getter and Setter
+      // allow you to access data, but compute it before you return it.
+      // when we want to tweak the value
+      // Gets or access this way
+      get myToppings() {
+        return this._toppings.map(el => el.toUpperCase());
+      }
+
+      // Sets or saves this way
+      set myToppings(toppings) {
+        const result = toppings.map(el => el.toLowerCase());
+        this._toppings = result;
+      }
+
+      // Static methods --> ALWAYS UTILITIES
+      // does not exist on the instance
+
+      // No: instance.MAX_THICKNESS
+      // YES: Pizza.MAX_THICKNESS
+      static MAX_THICKNESS = 0.25;
+
+      // static method. like .isFinite
+      static isPizza(object) {
+        // see if object has a key of type equal to pizza
+        return object.type === 'pizza';
+      }
+
+      // making something private
+      // can be updated internally
+      #upSellCusomter = true;
+
+      // method on the prototype
+      changeUpsellValue() {
+        this.#upSellCusomter = !this.#upSellCusomter;
+      }
+
+    }
+
+    // instances
+    const pepperoniPizza = new Pizza(['pepperoni'], 'Wes Bos');
+    const canadianPizza = new Pizza(['pineapple', ' ham'], 'Kait Bos');
+  </script>
 </body>
 
 </html>

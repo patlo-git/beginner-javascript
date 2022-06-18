@@ -10,6 +10,107 @@
 
 <body>
   <script>
+    // a regular function that makes a promise
+    function makePizza(toppings = []) {
+      // promises are made/returned immediately
+      // but don't resolve until ready
+      return new Promise(function (resolve, reject) {
+        // reject if people try Pineapple
+        if (toppings.includes('pineapple')) {
+          reject('Serilusly?! Get out!🍍')
+        }
+        // 500 ms to bake, and 200 ms for each topping
+        const amountOfTimeToBake = 500 + (toppings.length * 200);
+        // the logic of how the promise gets resolved is always inside the body
+        // wait 1 second for the pizza to cook:
+        setTimeout(() => {
+          // when you are ready you can resolve this promise
+          resolve(`Here is your 🍕 with the topping(s) ${toppings.join('')}`);
+        }, amountOfTimeToBake);
+        // if something went wrong we can reject the promise
+      });
+
+    }
+
+    // once it's resolved or rejected then you run the function
+    // where it will return the promise of pizza 
+    // and then, in order to get the pizza, 
+    // the way you access the resolved value is by chaining a .then on to it
+    // makePizza returns a promise, which allows us to chain
+
+    // SEQUENTIALLY
+    // if we had an oven that could only do one pizza at a time
+
+    console.log('First');
+    makePizza(['pepp'])
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['ham', ' extra cheese']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['sausage', ' bell peppers', ' mushrooms']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['pineapple']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['sausage', ' bell peppers', ' mushrooms', ' roasted garlic', ' extra cheese', ' pepp', ' onions']);
+      }).then(pizza => {
+        console.log('All done! Here is your last za');
+        console.log(pizza);
+      })
+      .catch(handleError);
+
+    // console.log('Right After');
+
+    // Run them CONCURRENTLY
+    // const pizzaPromise1 = makePizza(['sausage', ' bell peppers', ' mushrooms']);
+    // const pizzaPromise2 = makePizza(['sausage', ' bell peppers', ' mushrooms', ' roasted garlic', ' extra cheese', ' pepp', ' onions']);
+    // const pizzaPromise3 = makePizza(['ham', ' extra cheese']);
+
+    // // How do we know when they're all done?
+    // // mega promise
+    // // Promise.all is a static method, a little helper, 
+    // // takes an array of promises, baby promises
+    // // will only resolve when all the sub promises have been resolved themselves
+    // const dinnerPromise = Promise.all([pizzaPromise1, pizzaPromise2, pizzaPromise3]);
+
+    // dinnerPromise.then(function ([hottie, garbagePail, hammie]) {
+    //   // destructuring
+    //   console.log(hottie, garbagePail, hammie)
+    // });
+
+    // // Promise.race
+    // const firstPizzaPromise = Promise.race([pizzaPromise1, pizzaPromise2, pizzaPromise3]);
+
+    // firstPizzaPromise.then(pizza => {
+    //   console.log('You must be hungry! Here is the first one ready.');
+    //   console.log(pizza);
+    // });
+
+    // WB will often do this
+    // and call it later
+    function handleError(err) {
+      console.log('Ohh nooo!');
+      console.log(err);
+    }
+
+    makePizza(['cheese', 'pineapple'])
+      .then(pizza => {
+        console.log(pizza);
+      }).catch(handleError)
+
+    const p1 = makePizza(['pep']);
+    const p2 = makePizza(['pineapple']);
+
+    const dinnerPromise2 = Promise.allSettled([p1, p2])
+
+    dinnerPromise2.then(results => {
+      console.log(results);
+    })
 
   </script>
 </body>
