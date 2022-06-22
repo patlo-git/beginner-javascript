@@ -13,7 +13,7 @@ async function destroyPopup(popup) {
 }
 
 function ask(options) {
-  return new Promise(async function(resolve) {
+  return new Promise(async function (resolve) {
     // First we need to create a popup with all the fields in it
     const popup = document.createElement('form');
     popup.classList.add('popup');
@@ -36,7 +36,7 @@ function ask(options) {
       // TODO: listen for a click on that cancel button
       skipButton.addEventListener(
         'click',
-        function() {
+        function () {
           resolve(null);
           destroyPopup(popup);
         },
@@ -46,7 +46,7 @@ function ask(options) {
     // listen for the submit event on the inputs
     popup.addEventListener(
       'submit',
-      function(e) {
+      function (e) {
         e.preventDefault();
         console.log('SUBMITTED');
         resolve(e.target.input.value);

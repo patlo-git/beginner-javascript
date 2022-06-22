@@ -32,6 +32,53 @@
       });
     }
 
+    function handleError(err) {
+      console.log('ohhhh noooo');
+      console.log(err);
+    }
+
+    async function go() {
+      const pizza = await makePizza(['pineapple']);
+      console.log(pizza);
+      return pizza;
+    }
+
+    // catch it at run time
+    // go().catch(handleError);
+
+    // OR
+    // make a safe function with a Higher Order Function
+    function makeSafe(fn, errorHandler) {
+      return function () {
+        fn().catch(errorHandler)
+      }
+    }
+
+    // unsafe - no error catching built in code
+    // go();
+
+    // safe
+    // takes in a function, returns a new function, which is just the og function with a catch tacked on to the end of it
+    const safeGo = makeSafe(go, handleError);
+    safeGo();
+
+
+
+    // when you mark a function as async it will immediately return a Promise to you
+    // when it's not marked async it's a reg function that will return the data you want
+    // so you can await async functions b/c they are Promises themselves.
+
+    // ASYNC FUNCTIONS will always return a PROMISE themselves
+    // which means we can use a .catch or .then syntax on async functions if we want
+
+    // Useful: often you have a function that does a few things with promises inside of it
+    // but then you want to wait for the entire function to finish returning it's data
+    // if that's the case then you can await or use a .catch or .then on it
+
+    // can nest promises as deep as you want
+
+
+
   </script>
 </body>
 
