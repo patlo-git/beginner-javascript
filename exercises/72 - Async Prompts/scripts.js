@@ -23,6 +23,7 @@ function ask(options) {
   // 1. what will the text of the prompt be
   // 2. can you cancel it with a cancel button
   return new Promise(async function (resolve) {
+
     // 1. First we need to create a pop up with all the fields in it
     // immediately returns to us a DOM node so we can add event listeners.
     // if we used backticks and a form, we couldn't add event listeners
@@ -117,7 +118,7 @@ const questions = [
 
 // can make a utility function called asyncMap, but return to us an array like a map does
 async function asyncMap(array, callback) {
-  // make an array to stoure our results
+  // make an array to store our results
   const results = [];
   // loop over our array
   for (const item of array) {

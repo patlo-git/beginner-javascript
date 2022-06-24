@@ -1,16 +1,16 @@
 {
-  "name": "recipes",
+  "name": "dadjokes",
   "version": "1.0.0",
-  "main": "scripts.js",
+  "description": "",
+  "main": "jokes.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "start": "npx parcel index.html"
   },
   "author": "",
   "license": "ISC",
-  "browserslist": [
-    "last 1 chrome versions"
-  ],
-  "description": "",
   "devDependencies": {
     "parcel": "^2.6.2"
   }

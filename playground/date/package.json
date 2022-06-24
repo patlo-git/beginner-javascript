@@ -1,0 +1,17 @@
+{
+  "name": "date",
+  "version": "1.0.0",
+  "description": "tutorial for npm",
+  "main": "date.js",
+  "scripts": {
+    "start": "npx parcel date.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^2.28.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.6.1"
+  }
+}

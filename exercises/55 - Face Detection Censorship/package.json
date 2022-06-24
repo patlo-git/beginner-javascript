@@ -4,14 +4,14 @@
   "description": "",
   "main": "pixelated-face.js",
   "scripts": {
-    "start": "parcel face.html"
+    "start": "npx parcel face.html"
   },
   "author": "",
   "license": "ISC",
   "browserslist": [
     "last 1 Chrome version"
   ],
-  "dependencies": {
-    "parcel": "2.0.1"
+  "devDependencies": {
+    "parcel": "^2.6.2"
   }
 }

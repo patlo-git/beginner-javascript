@@ -11,6 +11,26 @@
       display: grid;
       grid-template-columns: 1fr;
     }
+
+    button[disabled] {
+      opacity: 0.2;
+    }
+
+    .recipes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .recipe {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    img {
+      width: 100px;
+      height: auto;
+    }
   </style>
 </head>
 
@@ -23,7 +43,7 @@
     <div class="recipes"></div>
   </div>
 
-  <script src="./scripts.js"></script>
+  <script type="module" src="./scripts.js"></script>
 </body>
 
 </html>

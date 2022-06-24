@@ -9,7 +9,62 @@
 </head>
 
 <body>
+  <!-- lets display some info about the user -->
+  <p class="user"></p>
+
   <script>
+    // not necessary to store API in a variable
+    // but that makes working with it easier
+    // endpoint is a fancy way of saying
+    // the url you need to visit to get the data
+    const baseEndpoint = 'https://api.github.com';
+    const usersEndpoint = `${baseEndpoint}/users`;
+    // get user info
+    const userEl = document.querySelector('.user');
+
+    // refactoring for async/await
+    async function displayUser(username) {
+      userEl.textContent = 'loading...';
+      // to get the data we use a library that is part of JS called FETCH - built into all browsers
+      // some other libraries are used, like AXIOS.
+      // it returns a PROMISE (1)
+      // const wesPromise = fetch(endpoint);
+      const response = await fetch(`${usersEndpoint}/${username}`);
+      const data = await response.json();
+      // how to get it back into JS?
+      // could name it "response", could name it "data", whatever you want
+      // it's not assumed that response will be JSON, it could be anything
+      // b/c you can use FETCH to return any type of data
+      // and it's not fully downloaded
+      // we need to tell the browser to convert it from JSON to a JS object
+      // wesPromise.then(response => {
+      //   // DBL PROMISE
+      //   // first one gets the response
+      //   // second one gets the response then turns it into json for use
+
+      //   // no need to JSON.parse it here, bc response.json will do that for us
+      //   // response.json returns another PROMISE (2),
+      //   return response.json();
+      //   // so we use .then to get the value of the promise, the data  
+      // }).then(data => {
+      console.log(data);
+      // console.log(data.blog);
+      // console.log(data.name);
+      // console.log(data.location);
+      // display user info on page
+      userEl.textContent = `${data.name} - ${data.blog}`;
+      // put a catch for error handling
+      // }).catch(handleError);
+    }
+    // debuggin APIs is hard and if you don't have proper error handling
+    // it's even harder
+    function handleError(err) {
+      console.log('OH NO!');
+      console.log(err);
+      userEl.textContent = `Something went wrong: ${err}`
+    }
+
+    displayUser('patlo').catch(handleError);
 
   </script>
 </body>
