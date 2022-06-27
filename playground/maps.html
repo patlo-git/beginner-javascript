@@ -9,7 +9,61 @@
 </head>
 
 <body>
+
+  <ul class="prizes"></ul>
   <script>
+    const person1 = {
+      name: 'wes',
+      age: 200,
+    }
+
+    const myMap = new Map();
+    // .set()  
+    // pass two args, the key and the value
+    myMap.set('name', 'wes');
+    myMap.set(100, 'this is a number');
+    myMap.set(person1, 'really cool');
+    console.log(myMap);
+
+    // dictionaries
+    const score = 200;
+    const prizes = new Map();
+    prizes.set(100, 'Bear');
+    prizes.set(200, 'Duck');
+    prizes.set(300, 'Cat');
+    console.log(`You win a ${prizes.get(score)}`);
+
+    // select that ul
+    const ul = document.querySelector('.prizes');
+    // destructuring
+    // instead of referencing by it's index
+    // we can create variables of the items in that by their index
+    for (const [points, prize] of prizes) {
+      console.log(points, prize);
+      const li = `<li>${points} - ${prize}</li>`;
+      ul.insertAdjacentHTML('beforeend', li);
+    }
+
+    // when to use a map vs object?
+    // you should use a map if you need to maintain the order of your items
+    // downside to Map is there is no literal
+    // have to create a Map with new Map and then set items in it
+    // can pass items into Map with an array of arrays
+    // can put functions inside of an object, called methods
+    // cannot do that with a map, they're simply for storing data
+
+    // anytime you want to transfer an object or an array,
+    // you have to first convert that to a portable format, json.
+    // can use JSON.stringify(person), pass it your object(person)
+    // and it converts your object into a string, which you can send.
+    // someone can take that string and turn it back into an object using JSON.parst('string object')
+
+    // currently JSON doesn't handle Maps
+    // if you have a Map and want to send it to someone,
+    // you have to convert it to an object
+    // Object.fromEntries(myMap), but it's not great
+
+    // .has()
 
   </script>
 </body>
