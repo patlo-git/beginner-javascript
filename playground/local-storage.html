@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local storage</title>
+</head>
+
+<body>
+  <h1>Todos in Console</h1>
+  <script>
+    const dbName = 'todos-vanillaJs';
+    // by calling this right when we refresh the page
+    // it's going to check if local storage has any todos in there.
+    // if it does, it's going to grab the things out of local storage, return that as an array back to todos and store it there.
+    const todos = getAllTodos();
+
+    // Create toDo Object
+    // {title: "clean your Escort", completed: false, id: 1656360636863}
+    function createTodo(title) {
+      const id = new Date().getTime();
+      todos.push({
+        title: title,
+        completed: false,
+        id: id,
+      });
+    }
+
+    // update the database
+    function updateDB() {
+      const dbAsString = JSON.stringify(todos);
+      localStorage.setItem(dbName, dbAsString);
+    }
+
+    function getAllTodos() {
+      const dbAsJSON = localStorage.getItem(dbName);
+      // not sure what data if any we're getting back
+      // if there's something there, do something
+      // else return an empty array
+      if (dbAsJSON) {
+        // if there is value in there, we need to parse it out of JSON and back into an array
+        const dbAsArray = JSON.parse(dbAsJSON)
+        return dbAsArray;
+      } else {
+        return [];
+      }
+    }
+
+    // READ
+    function listAllTodos() {
+      todos.forEach(todo => console.log(todo.title));
+    };
+
+    // UPDATE
+    function updateTodo(id, newTitle) {
+      for (let i = 0; i < todos.length; i++) {
+        // check if todos equal id we're looking for
+        if (todos[i].id === id) {
+          // then we need to update it
+          // and change the title
+          todos[i].title = newTitle;
+          // stop at the first item if we find it
+          break;
+        }
+      }
+    }
+
+    // DELETE
+    function deleteTodo(id) {
+      for (let i = 0; i < todos.length; i++) {
+        // check if id is right
+        if (todos[i].id === id) {
+          // three use cases
+          // first
+          if (i === 0) {
+            todos.shift();
+            // last
+          } else if (i === todos.length - 1) {
+            todos.pop();
+            // middle
+          } else {
+            todos = [
+              // make a new array, starting at the beginning b/c it's not the begining and going up to the point in which we are
+              ...todos.slice(0, i),
+              ...todos.slice(i + 1)
+            ];
+          }
+          break;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
